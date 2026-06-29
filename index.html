@@ -405,6 +405,7 @@
       <div>
         <label>Tuntihinta (€/h)</label>
         <select id="hourlyRate" onchange="calc()">
+          <option value="25">25 €/h</option>
           <option value="29">29 €/h</option>
           <option value="32">32 €/h</option>
           <option value="35">35 €/h</option>
@@ -640,7 +641,7 @@
   function updateRateFromServices() {
     const rates = Array.from(activeServices).map(id => services.find(s => s.id === id).rate);
     const max = Math.max(...rates);
-    const opts = [29, 32, 35, 39];
+    const opts = [25, 29, 32, 35, 39];
     const closest = opts.reduce((a, b) => Math.abs(b - max) < Math.abs(a - max) ? b : a);
     document.getElementById("hourlyRate").value = closest;
   }
