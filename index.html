@@ -536,7 +536,7 @@
     <div class="result-line" id="rDiscRow"><span id="rDiscLabel">Alennus</span><span id="rDisc">—</span></div>
     <div class="result-line" id="rCommRow"><span>Myyntikomissio</span><span id="rComm">—</span></div>
     <div class="result-line bold"><span>Palveluhinta (ALV 0 %)</span><span id="rNet">—</span></div>
-    <div class="result-line" id="rLiftRow" style="padding:6px 0; margin:2px 0; border-radius:6px;"><span style="font-style:italic;">+ Henkilönostin (läpilaskutus)</span><span id="rLift" style="font-style:italic;">—</span></div>
+    <div class="result-line" id="rLiftRow" style="padding:6px 0; margin:2px 0; border-radius:6px;"><span style="font-style:italic;">+ Vuokrakalusto (läpilaskutus)</span><span id="rLift" style="font-style:italic;">—</span></div>
     <div class="result-line bold"><span>Hinta sis. ALV 25,5 %</span><span id="rGross">—</span></div>
     <div class="result-line total"><span>Tarjoushinta (ALV 0 %)</span><span id="rFinal">—</span></div>
  
@@ -758,7 +758,7 @@
     }
     const materialCost = netServices * materialPct;
  
-    const totalCost = laborCost + materialCost + ownEqCost + travel;
+    const totalCost = laborCost + materialCost + ownEqCost + travel + commAmt;
     const marginEur = netServices - totalCost;
     const marginPct = netServices > 0 ? (marginEur / netServices * 100) : 0;
  
@@ -899,7 +899,7 @@
       "Tuntihinta: " + rate + " €/h",
       "Tunnit/käynti: " + hours + " h × " + workers + " hlö",
       travelLine,
-      "Henkilönostin: " + lift,
+      "Vuokrakalusto: " + lift,
       discLine ? "Alennus: −" + disc + " %" : null,
       "─".repeat(36),
       "Hinta (ALV 0 %): " + net,
