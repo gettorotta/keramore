@@ -6,7 +6,7 @@
 <title>Tarjouslaskuri</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   :root {
     --bg: #f5f7fa;
     --surface: #ffffff;
@@ -24,7 +24,7 @@
     --yellow: #b7770d;
     --green: #1a7a4a;
   }
-
+ 
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     background: var(--bg);
@@ -34,9 +34,9 @@
     min-height: 100vh;
     padding: 2rem 1rem;
   }
-
+ 
   .page { max-width: 720px; margin: 0 auto; }
-
+ 
   .header {
     display: flex;
     align-items: baseline;
@@ -47,7 +47,7 @@
   }
   .header h1 { font-size: 20px; font-weight: 600; color: var(--text); }
   .header-sub { font-size: 13px; color: var(--text-muted); }
-
+ 
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -55,7 +55,7 @@
     padding: 1.25rem 1.5rem;
     margin-bottom: 1rem;
   }
-
+ 
   h3 {
     font-size: 11px;
     font-weight: 600;
@@ -64,9 +64,9 @@
     letter-spacing: 0.07em;
     margin-bottom: 0.875rem;
   }
-
+ 
   label { font-size: 13px; color: var(--text-muted); display: block; margin-bottom: 3px; }
-
+ 
   input[type="number"], input[type="text"], select {
     width: 100%;
     height: 36px;
@@ -80,10 +80,10 @@
     font-family: inherit;
   }
   input:focus, select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(26,95,168,0.1); }
-
+ 
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-
+ 
   .toggle-row { display: flex; gap: 6px; flex-wrap: wrap; }
   .toggle {
     padding: 6px 13px;
@@ -100,10 +100,10 @@
   }
   .toggle.active { background: var(--blue); color: #fff; border-color: var(--blue); }
   .toggle:hover:not(.active) { background: var(--surface-2); border-color: var(--border-strong); }
-
+ 
   .service-grid { display: flex; flex-wrap: wrap; gap: 5px; }
   @media (max-width: 480px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
-
+ 
   .service-toggle {
     padding: 5px 11px;
     font-size: 12px;
@@ -119,7 +119,7 @@
   }
   .service-toggle.active { background: var(--blue-light); color: var(--blue); border-color: var(--blue); }
   .service-toggle:hover:not(.active) { background: var(--surface-2); }
-
+ 
   .eq-row {
     display: flex;
     align-items: center;
@@ -132,7 +132,7 @@
   }
   .eq-row label { margin: 0; font-size: 13px; color: var(--text); }
   .eq-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
-
+ 
   .qty-ctrl { display: flex; align-items: center; gap: 8px; }
   .qty-btn {
     width: 26px; height: 26px;
@@ -148,7 +148,7 @@
   }
   .qty-btn:hover { background: var(--bg); }
   .qty-val { font-size: 14px; font-weight: 600; min-width: 22px; text-align: center; }
-
+ 
   .note-box {
     font-size: 12px;
     padding: 8px 11px;
@@ -157,9 +157,9 @@
   }
   .note-box.blue { background: var(--blue-light); color: var(--blue); border-left: 3px solid var(--blue); }
   .note-box.gray { background: var(--surface-2); color: var(--text-muted); border-left: 3px solid var(--border-strong); }
-
+ 
   .divider { border: none; border-top: 1px solid var(--border); margin: 0.5rem 0 1rem; }
-
+ 
   .result-card {
     background: var(--surface);
     border: 1.5px solid var(--blue);
@@ -167,7 +167,7 @@
     padding: 1.5rem;
     margin-bottom: 1rem;
   }
-
+ 
   .result-header {
     display: flex;
     align-items: center;
@@ -177,7 +177,7 @@
     border-bottom: 1px solid var(--border);
   }
   .result-title { font-size: 15px; font-weight: 600; }
-
+ 
   .tag {
     font-size: 11px;
     font-weight: 600;
@@ -188,7 +188,7 @@
   }
   .tag-new { background: var(--blue-light); color: var(--blue); }
   .tag-existing { background: #eaf5ee; color: var(--green); }
-
+ 
   .result-line {
     display: flex;
     justify-content: space-between;
@@ -208,7 +208,7 @@
     padding-top: 12px;
   }
   .result-line span:last-child { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
-
+ 
   .internal-block {
     margin-top: 12px;
     padding: 10px 14px;
@@ -232,7 +232,7 @@
     padding: 2px 0;
   }
   .internal-line.strong { font-weight: 600; color: var(--text); margin-top: 5px; padding-top: 5px; border-top: 1px solid var(--border); }
-
+ 
   .kpi-row {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -244,7 +244,7 @@
   .kpi { text-align: center; }
   .kpi-label { font-size: 11px; color: var(--text-muted); margin-bottom: 3px; }
   .kpi-value { font-size: 17px; font-weight: 700; }
-
+ 
   .btn-copy {
     width: 100%;
     height: 40px;
@@ -260,7 +260,7 @@
     transition: background 0.1s;
   }
   .btn-copy:hover { background: var(--blue-mid); }
-
+ 
   .btn-row { display: flex; gap: 10px; margin-top: 1rem; }
   .btn-row .btn-copy { margin-top: 0; flex: 1; }
   .btn-offer {
@@ -277,7 +277,7 @@
     transition: background 0.1s;
   }
   .btn-offer:hover { background: var(--blue-light); }
-
+ 
   /* Offer modal */
   .modal-overlay {
     display: none;
@@ -337,23 +337,23 @@
   .btn-modal-copy:hover { background: var(--blue-mid); }
   .btn-modal-close { background: var(--surface-2); color: var(--text-muted); border: 1px solid var(--border) !important; }
   .btn-modal-close:hover { background: var(--bg); }
-
+ 
   .margin-alert { font-size: 12px; font-weight: 500; }
-
+ 
   .lift-input-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .lift-input-row input { max-width: 80px; }
 </style>
 </head>
 <body>
 <div class="page">
-
+ 
   <div class="header">
     <div>
       <h1>Tarjouslaskuri</h1>
     </div>
     <div style="font-size:12px; color:var(--text-muted);" id="todayDate"></div>
   </div>
-
+ 
   <!-- Asiakastiedot -->
   <div class="card">
     <h3>Asiakastiedot</h3>
@@ -385,7 +385,7 @@
       </div>
     </div>
   </div>
-
+ 
   <!-- Palvelut -->
   <div class="card">
     <h3>Palvelut</h3>
@@ -397,7 +397,7 @@
       <div style="font-size:12px; color:var(--text-muted); margin-top:5px;">Kuvaa henkilöstöpalvelun sisältö vapaamuotoisesti</div>
     </div>
   </div>
-
+ 
   <!-- Työn laajuus -->
   <div class="card">
     <h3>Työn laajuus &amp; hinnoittelu</h3>
@@ -421,7 +421,7 @@
       </div>
     </div>
   </div>
-
+ 
   <!-- Toistuvuus -->
   <div class="card">
     <h3>Toistuvuus</h3>
@@ -436,7 +436,7 @@
       <input type="number" id="contractMonths" value="12" min="1" max="60" style="max-width:80px;" oninput="calc()" />
     </div>
   </div>
-
+ 
   <!-- Sijainti -->
   <div class="card">
     <h3>Sijainti &amp; matkakulut</h3>
@@ -467,7 +467,7 @@
       <div id="travelCalcNote" style="font-size:12px; color:var(--text-muted);"></div>
     </div>
   </div>
-
+ 
   <!-- Oma kalusto -->
   <div class="card">
     <h3>Oma kalusto</h3>
@@ -477,7 +477,7 @@
       Oman kaluston kustannus: <strong style="margin-left:6px; color:var(--text);" id="ownEqCostDisplay">0,00 €</strong>
     </div>
   </div>
-
+ 
   <!-- Vuokrattava kalusto -->
   <div class="card">
     <h3>Vuokrattava kalusto</h3>
@@ -501,7 +501,7 @@
       </div>
     </div>
   </div>
-
+ 
   <!-- Myynti & kate -->
   <div class="card">
     <h3>Myynti &amp; kate</h3>
@@ -521,14 +521,14 @@
     </div>
     <div style="margin-top:8px;" id="marginAlert" class="margin-alert"></div>
   </div>
-
+ 
   <!-- Tulos -->
   <div class="result-card">
     <div class="result-header">
       <span class="result-title" id="resultClientName">Tarjouslaskelma</span>
       <span id="customerTag" class="tag tag-new">Uusi asiakas</span>
     </div>
-
+ 
     <div class="result-line"><span id="rServicesLabel">Palvelut</span><span id="rServices">—</span></div>
     <div class="result-line"><span>Työtunnit yhteensä</span><span id="rHours">—</span></div>
     <div class="result-line"><span>Työn hinta</span><span id="rLabor">—</span></div>
@@ -539,7 +539,7 @@
     <div class="result-line" id="rLiftRow" style="padding:6px 0; margin:2px 0; border-radius:6px;"><span style="font-style:italic;">+ Henkilönostin (läpilaskutus)</span><span id="rLift" style="font-style:italic;">—</span></div>
     <div class="result-line bold"><span>Hinta sis. ALV 25,5 %</span><span id="rGross">—</span></div>
     <div class="result-line total"><span>Tarjoushinta (ALV 0 %)</span><span id="rFinal">—</span></div>
-
+ 
     <div class="internal-block">
       <div class="internal-label">Sisäinen — ei näy asiakkaalle</div>
       <div class="internal-line"><span>Työvoimakustannus (15,46 €/h)</span><span id="iLaborCost">—</span></div>
@@ -548,7 +548,7 @@
       <div class="internal-line strong"><span>Kate €</span><span id="iMarginEur">—</span></div>
       <div class="internal-line strong"><span>Kate %</span><span id="iMarginPct">—</span></div>
     </div>
-
+ 
     <div class="kpi-row">
       <div class="kpi">
         <div class="kpi-label">Kate %</div>
@@ -564,14 +564,14 @@
       </div>
     </div>
   </div>
-
+ 
   <div class="btn-row">
-    <button class="btn-copy" onclick="copyToClipboard()">Kopioi tarjous leikepöydälle</button>
+    <button class="btn-copy" onclick="copyToClipboard()">Kopioi tarjousyhteenveto leikepöydälle</button>
     <button class="btn-offer" onclick="openOfferModal()">Luo alustava tarjous</button>
   </div>
-
+ 
 </div>
-
+ 
 <!-- Offer Modal -->
 <div class="modal-overlay" id="offerModal" onclick="closeModalOutside(event)">
   <div class="modal">
@@ -580,7 +580,7 @@
       <button class="modal-close" onclick="closeModal()">&#x2715;</button>
     </div>
     <div class="modal-body">
-      <textarea id="offerText" spellcheck="false"></textarea>
+      <div id="offerText" style="width:100%; min-height:520px; border:1px solid var(--border); border-radius:var(--radius); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; line-height:1.7; color:var(--text); background:var(--surface-2); padding:16px; overflow-y:auto;"></div>
     </div>
     <div class="modal-footer">
       <button class="btn-modal-close" onclick="closeModal()">Sulje</button>
@@ -588,10 +588,10 @@
     </div>
   </div>
 </div>
-
+ 
 <script>
   document.getElementById("todayDate").textContent = new Date().toLocaleDateString("fi-FI", { day:"numeric", month:"long", year:"numeric" });
-
+ 
   const services = [
     { id:"basic",     name:"Perussiivous",      rate:29 },
     { id:"deepclean", name:"Tehopyyhintä",       rate:35 },
@@ -607,7 +607,7 @@
     { id:"facade",    name:"Julkisivupesu",      rate:39 },
   ];
   const activeServices = new Set(["basic"]);
-
+ 
   const ownEquipment = [
     { id:"scrubber",     name:"Lattianhoitokone",  costPerUse:25 },
     { id:"wax_m",        name:"Vahauskalusto",     costPerUse:12 },
@@ -617,18 +617,18 @@
   ];
   const ownQty = {};
   ownEquipment.forEach(e => ownQty[e.id] = 0);
-
+ 
   let liftDays = 0;
   const state = { customer: "new", freq: "weekly", servicetype: "cleaning" };
   const freqPerMonth = { once: null, weekly: 4.33, biweekly: 2.17, monthly: 1 };
-
+ 
   function buildServices() {
     document.getElementById("serviceGrid").innerHTML = services.map(s => `
       <div class="service-toggle ${activeServices.has(s.id) ? "active" : ""}" onclick="toggleService('${s.id}')">
         <span>${s.name}</span>
       </div>`).join("");
   }
-
+ 
   function toggleService(id) {
     if (activeServices.has(id)) { if (activeServices.size === 1) return; activeServices.delete(id); }
     else activeServices.add(id);
@@ -636,7 +636,7 @@
     updateRateFromServices();
     calc();
   }
-
+ 
   function updateRateFromServices() {
     const rates = Array.from(activeServices).map(id => services.find(s => s.id === id).rate);
     const max = Math.max(...rates);
@@ -644,7 +644,7 @@
     const closest = opts.reduce((a, b) => Math.abs(b - max) < Math.abs(a - max) ? b : a);
     document.getElementById("hourlyRate").value = closest;
   }
-
+ 
   function buildOwnEquip() {
     document.getElementById("ownEquipList").innerHTML = ownEquipment.map(e => `
       <div class="eq-row">
@@ -659,25 +659,25 @@
         </div>
       </div>`).join("");
   }
-
+ 
   function adjOwn(id, delta) {
     ownQty[id] = Math.max(0, ownQty[id] + delta);
     document.getElementById("oqty_" + id).textContent = ownQty[id];
     calc();
   }
-
+ 
   function adjLift(delta) {
     liftDays = Math.max(0, liftDays + delta);
     document.getElementById("liftDays").textContent = liftDays;
     calc();
   }
-
+ 
   function setToggle(el) {
     const g = el.dataset.group;
     document.querySelectorAll(`.toggle[data-group="${g}"]`).forEach(t => t.classList.remove("active"));
     el.classList.add("active");
     state[g] = el.dataset.val;
-
+ 
     if (g === "customer") {
       const discInput = document.getElementById("discount");
       const discNote = document.getElementById("discountNote");
@@ -689,7 +689,7 @@
         discNote.style.display = "none";
       }
     }
-
+ 
     if (g === "servicetype") {
       const isStaffing = state.servicetype === "staffing";
       document.getElementById("serviceGridWrap").style.display = isStaffing ? "none" : "block";
@@ -697,15 +697,15 @@
     }
     calc();
   }
-
+ 
   function onLocationChange() {
     calc();
   }
-
+ 
   function fmt(n) {
     return n.toLocaleString("fi-FI", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
   }
-
+ 
   function calc() {
     const rate = parseFloat(document.getElementById("hourlyRate").value) || 29;
     const hours = parseFloat(document.getElementById("hours").value) || 0;
@@ -718,15 +718,15 @@
     const marginTarget = parseFloat(document.getElementById("marginTarget").value) || 30;
     const months = parseInt(document.getElementById("contractMonths").value) || 12;
     const liftPrice = parseFloat(document.getElementById("liftPrice").value) || 300;
-
+ 
     const totalHours = hours * workers;
     const labor = rate * totalHours;
     const liftCost = liftDays * liftPrice;
-
+ 
     let ownEqCost = 0;
     ownEquipment.forEach(e => { ownEqCost += e.costPerUse * ownQty[e.id]; });
     document.getElementById("ownEqCostDisplay").textContent = fmt(ownEqCost);
-
+ 
     // Subtotal excludes lift — discount & commission applied only on service+travel
     const subtotal = labor + travel;
     const discAmt = subtotal * (discPct / 100);
@@ -735,12 +735,12 @@
     const netServices = afterDisc + commAmt; // siivouspalvelujen hinta
     const net = netServices + liftCost;      // kokonaishinta asiakkaalle
     const gross = net * 1.255;
-
+ 
     // Kate lasketaan vain palveluista — nostin läpilaskutus, ei vaikuta katteeseen
     // Työvoimakustannus: 12,37 €/h + 25 % sivukulut = 15,46 €/h per tekijä
     const wagePerHour = 12.37 * 1.25; // 15.4625 €/h
     const laborCost = wagePerHour * totalHours;
-
+ 
     // Kemikaali- ja välinekustannus palvelukohtaisesti (% laskutushinnasta)
     const materialRates = {
       basic: 0.03, maint: 0.03, dishes: 0.03, laundry: 0.03, wc: 0.03,
@@ -757,26 +757,26 @@
       materialPct = Math.max(...rates); // käytetään korkeinta valituista palveluista
     }
     const materialCost = netServices * materialPct;
-
+ 
     const totalCost = laborCost + materialCost + ownEqCost + travel;
     const marginEur = netServices - totalCost;
     const marginPct = netServices > 0 ? (marginEur / netServices * 100) : 0;
-
+ 
     const fpm = freqPerMonth[state.freq];
     const contractTotal = fpm ? net * fpm * months : net;
-
+ 
     const activeNames = state.servicetype === "staffing"
       ? [document.getElementById("staffingDesc").value || "Vuokrasiivooja"]
       : Array.from(activeServices).map(id => services.find(s => s.id === id).name);
     document.getElementById("rServicesLabel").textContent = "Palvelut (" + activeNames.join(", ") + ")";
     document.getElementById("rServices").textContent = activeNames.length + " kpl";
-
+ 
     document.getElementById("rHours").textContent = totalHours.toFixed(1) + " h";
     document.getElementById("rLabor").textContent = fmt(labor);
-
+ 
     document.getElementById("rLift").textContent = liftDays > 0 ? fmt(liftCost) + " (" + liftDays + " pv)" : "—";
     document.getElementById("rLiftRow").style.opacity = liftDays > 0 ? "1" : "0.4";
-
+ 
     const travelNote = document.getElementById("travelCalcNote");
     if (extraKm > 0) {
       document.getElementById("rTravel").textContent = fmt(travel) + " (" + extraKm + " km × 2 × " + kmRate.toFixed(2) + " €)";
@@ -787,7 +787,7 @@
       document.getElementById("rTravelRow").style.opacity = "0.4";
       travelNote.textContent = "Ei matkakuluja (toimialueen sisällä)";
     }
-
+ 
     if (discPct > 0) {
       const isAuto = state.customer === "existing" && discPct == 5;
       document.getElementById("rDiscLabel").textContent = isAuto ? "Kanta-asiakasalennus (−5 %)" : "Alennus (−" + discPct + " %)";
@@ -798,20 +798,20 @@
       document.getElementById("rDisc").textContent = "—";
       document.getElementById("rDiscRow").style.opacity = "0.4";
     }
-
+ 
     document.getElementById("rComm").textContent = commPct > 0 ? fmt(commAmt) : "—";
     document.getElementById("rCommRow").style.opacity = commPct > 0 ? "1" : "0.4";
-
+ 
     document.getElementById("rNet").textContent = fmt(netServices);
     document.getElementById("rGross").textContent = fmt(gross);
     document.getElementById("rFinal").textContent = fmt(net);
-
+ 
     document.getElementById("iLaborCost").textContent = fmt(laborCost);
     document.getElementById("iMaterial").textContent = fmt(materialCost) + " (" + Math.round(materialPct * 100) + " %)";
     document.getElementById("iOwnEq").textContent = fmt(ownEqCost);
     document.getElementById("iMarginEur").textContent = fmt(marginEur);
     document.getElementById("iMarginPct").textContent = Math.round(marginPct) + " %";
-
+ 
     let marginColor;
     if (marginPct >= 30) marginColor = "var(--green)";
     else if (marginPct >= 25) marginColor = "var(--yellow)";
@@ -819,10 +819,10 @@
     else marginColor = "var(--red)";
     document.getElementById("rMarginPct").textContent = Math.round(marginPct) + " %";
     document.getElementById("rMarginPct").style.color = marginColor;
-
+ 
     document.getElementById("rPerVisit").textContent = fmt(net);
     document.getElementById("rContractTotal").textContent = fpm ? fmt(contractTotal) : "Kertasuoritus";
-
+ 
     const alertEl = document.getElementById("marginAlert");
     alertEl.style.padding = "7px 11px";
     alertEl.style.borderRadius = "6px";
@@ -840,7 +840,7 @@
       alertEl.textContent = "✗ Kate " + Math.round(marginPct) + " % — kriittisen alhainen";
       alertEl.style.color = "var(--red)"; alertEl.style.background = "#fdf0ef"; alertEl.style.border = "1px solid #f5c6c2";
     }
-
+ 
     const tag = document.getElementById("customerTag");
     const client = document.getElementById("client").value;
     const addr = document.getElementById("address").value;
@@ -857,7 +857,7 @@
       tag.textContent = "Vanha asiakas";
     }
   }
-
+ 
   function copyToClipboard() {
     const client = document.getElementById("client").value || "—";
     const address = document.getElementById("address").value || "";
@@ -886,7 +886,7 @@
     const travelLine = extraKmCopy > 0
       ? "Toimialue: " + locationName + " (+" + extraKmCopy + " km) → matkakulut " + travelCostCopy + " €"
       : "Toimialue: " + locationName + " (toimialueen sisällä)";
-
+ 
     const txt = [
       "TARJOUSLASKELMA",
       "─".repeat(36),
@@ -909,20 +909,20 @@
       "─".repeat(36),
       "Generoitu: " + new Date().toLocaleDateString("fi-FI"),
     ].filter(Boolean).join("\n");
-
+ 
     navigator.clipboard.writeText(txt).then(() => {
       const btn = document.querySelector(".btn-copy");
       btn.textContent = "✓ Kopioitu!";
       setTimeout(() => { btn.textContent = "Kopioi tarjousyhteenveto leikepöydälle"; }, 2500);
     });
   }
-
+ 
   function openOfferModal() {
     const client = document.getElementById("client").value || "[Asiakkaan nimi]";
     const address = document.getElementById("address").value || "[Osoite]";
     const today = new Date().toLocaleDateString("fi-FI");
-    const net = document.getElementById("rNet").textContent.replace(" ", " ");
-    const gross = document.getElementById("rGross").textContent.replace(" ", " ");
+    const net = document.getElementById("rNet").textContent.replace(" ", " ");
+    const gross = document.getElementById("rGross").textContent.replace(" ", " ");
     const hourlyRate = document.getElementById("hourlyRate").value;
     const hours = document.getElementById("hours").value;
     const workers = document.getElementById("workers").value;
@@ -936,12 +936,12 @@
     const serviceLabel = activeNames.join(", ");
     const locationSel = document.getElementById("location");
     const locationName = locationSel.options[locationSel.selectedIndex].text;
-
+ 
     const freqMap = { "Kertasuoritus": "Kertasuoritus", "Viikottain": "1 x / vko", "Joka 2. viikko": "1 x / 2 vko", "Kuukausittain": "1 x / kk" };
     const freqLabel = freqMap[freqEl ? freqEl.textContent : ""] || freq;
-
+ 
     const kohde = address !== "[Osoite]" ? client + ", " + address : client;
-
+ 
     const workerDesc = workers + " henkilö" + (parseInt(workers) > 1 ? "ä" : "") + ", " + hours + " h / käynti, " + hourlyRate + " €/h";
     let palveluKuvaus = "";
     if (isStaffing) {
@@ -949,66 +949,90 @@
     } else {
       palveluKuvaus = freqLabel + " tehtävä " + serviceLabel.toLowerCase() + "\n" + workerDesc;
     }
-
+ 
     const staffingLine = isStaffing
       ? "\n* Henkilöstövuokraus: työntekijän palkka x 1,75"
       : "";
-
-    const offer = [
-      "ALUSTAVA TARJOUS",
-      "",
-      "Päivämäärä: " + today,
-      "",
-      "Asiakas:",
-      "* Nimi: " + client,
-      "* Y-tunnus:",
-      "* Osoite: " + address,
-      "* Yhteyshenkilö:",
-      "",
-      "Palvelun sisältö ja hinta",
-      palveluKuvaus,
-      "Hinta: " + net + " + alv. 25,5 %",
-      "",
-      "* Hinta sisältää sovitun työn, lakisääteiset vakuutukset sekä työn suorittamiseen tarvittavan välineistön ja aineet.",
-      "* (Tilanvaraus: Mahdolliset erikoismenetelmät tai tarkennukset)",
-      "",
-      "Lisäpalvelut ja -veloitukset:",
-      "* Mahdolliset lisätyöt alk. " + hourlyRate + " € / työtunti",
-      "* Saniteettitarviketäydennykset erillisen hinnaston mukaan" + staffingLine,
-      "",
-      "Sopimusehdot",
-      "* Laskutus: Kerran kuukaudessa, 14 vrk maksuajalla.",
-      "* Irtisanomisaika: 1 kuukautta.",
-      "* Vakuutus: Vastuuvakuutus on 500 000 € (If Vahinkovakuutus Oyj).",
-      "* Tilaajavastuu: Täytämme tilaajavastuulain mukaiset velvoitteet. Kuulumme Tilaajavastuu.fi -palveluun.",
-      "",
-
-    ].join("\n");
-
-    document.getElementById("offerText").value = offer;
+ 
+    const staffingExtraLine = isStaffing
+      ? "<li>Henkilöstövuokraus: työntekijän palkka x 1,75</li>"
+      : "";
+ 
+    const palveluKuvausHtml = palveluKuvaus.replace("\n", "<br>");
+ 
+    const offer = `
+<p style="margin:0 0 4px 0;"><strong>ALUSTAVA TARJOUS</strong></p>
+<p style="margin:0 0 16px 0; color:#6b7a90; font-size:12px;">Päivämäärä: ${today}</p>
+ 
+<p style="margin:0 0 4px 0;"><strong>Asiakas</strong></p>
+<table style="border-collapse:collapse; margin-bottom:16px;">
+  <tr><td style="padding:1px 12px 1px 0; color:#6b7a90;">Nimi</td><td>${client}</td></tr>
+  <tr><td style="padding:1px 12px 1px 0; color:#6b7a90;">Y-tunnus</td><td></td></tr>
+  <tr><td style="padding:1px 12px 1px 0; color:#6b7a90;">Osoite</td><td>${address}</td></tr>
+  <tr><td style="padding:1px 12px 1px 0; color:#6b7a90;">Yhteyshenkilö</td><td></td></tr>
+</table>
+ 
+<p style="margin:0 0 4px 0;"><strong>Palvelun sisältö ja hinta</strong></p>
+<p style="margin:0 0 4px 0;">${palveluKuvausHtml}</p>
+<p style="margin:0 0 4px 0;"><strong>Hinta: ${net} + alv. 25,5 %</strong></p>
+<p style="margin:0 0 4px 0;">Hinta sisältää sovitun työn, lakisääteiset vakuutukset sekä työn suorittamiseen tarvittavan välineistön ja aineet.</p>
+<p style="margin:0 0 16px 0; font-style:italic; color:#6b7a90;">Lisää mahdolliset erikoismenetelmät, kalusto ja muut tarkennukset.</p>
+ 
+<p style="margin:0 0 4px 0;"><strong>Lisäpalvelut ja -veloitukset</strong></p>
+<ul style="margin:0 0 16px 0; padding-left:20px;">
+  <li>Mahdolliset lisätyöt alk. ${hourlyRate} € / työtunti</li>
+  <li>Saniteettitarviketäydennykset erillisen hinnaston mukaan</li>
+  ${staffingExtraLine}
+</ul>
+ 
+<p style="margin:0 0 4px 0;"><strong>Sopimusehdot</strong></p>
+<ul style="margin:0 0 16px 0; padding-left:20px;">
+  <li>Laskutus: Kerran kuukaudessa, 14 vrk maksuajalla.</li>
+  <li>Irtisanomisaika: 1 kuukautta.</li>
+  <li>Vakuutus: Vastuuvakuutus on 1 000 000 €.</li>
+  <li>Kuulumme Tilaajavastuu.fi -palveluun.</li>
+</ul>
+<p style="margin:16px 0 0 0;">Toivottavasti tarjouksemme herättää mielenkiintoa ja pääsemme yhteistyössä vauhtiin.</p>`;
+ 
+    document.getElementById("offerText").innerHTML = offer;
     document.getElementById("offerModal").classList.add("open");
   }
-
+ 
   function closeModal() {
     document.getElementById("offerModal").classList.remove("open");
   }
-
+ 
   function closeModalOutside(e) {
     if (e.target === document.getElementById("offerModal")) closeModal();
   }
-
+ 
   function copyOffer() {
-    const txt = document.getElementById("offerText").value;
-    navigator.clipboard.writeText(txt).then(() => {
-      const btn = document.querySelector(".btn-modal-copy");
-      btn.textContent = "✓ Kopioitu!";
-      setTimeout(() => { btn.textContent = "Kopioi leikepöydälle"; }, 2500);
-    });
+    const el = document.getElementById("offerText");
+    const html = el.innerHTML;
+    const plain = el.innerText;
+    const btn = document.querySelector(".btn-modal-copy");
+    try {
+      const clipItem = new ClipboardItem({
+        "text/html": new Blob([html], { type: "text/html" }),
+        "text/plain": new Blob([plain], { type: "text/plain" }),
+      });
+      navigator.clipboard.write([clipItem]).then(() => {
+        btn.textContent = "✓ Kopioitu!";
+        setTimeout(() => { btn.textContent = "Kopioi leikepöydälle"; }, 2500);
+      });
+    } catch (e) {
+      // Fallback: plain text
+      navigator.clipboard.writeText(plain).then(() => {
+        btn.textContent = "✓ Kopioitu (teksti)";
+        setTimeout(() => { btn.textContent = "Kopioi leikepöydälle"; }, 2500);
+      });
+    }
   }
-
+ 
   buildServices();
   buildOwnEquip();
   calc();
 </script>
 </body>
 </html>
+ 
