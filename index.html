@@ -428,6 +428,19 @@
     <h3>Toistuvuus</h3>
     <div class="toggle-row">
       <div class="toggle" data-group="freq" data-val="once" onclick="setToggle(this)">Kertasuoritus</div>
+      <div style="display:inline-flex; align-items:center; gap:6px;">
+        <div class="toggle" data-group="freq" data-val="daily" onclick="setToggle(this)">Päivittäin</div>
+        <span id="dailyDaysWrap" style="display:none; align-items:center; gap:4px; font-size:13px; color:var(--text-muted);">
+          <select id="dailyDays" onchange="calc()" style="height:30px; width:52px; font-size:13px; padding:0 4px;">
+            <option value="1">1 pv</option>
+            <option value="2">2 pv</option>
+            <option value="3">3 pv</option>
+            <option value="4">4 pv</option>
+            <option value="5" selected>5 pv</option>
+          </select>
+          <span>/ vko</span>
+        </span>
+      </div>
       <div class="toggle active" data-group="freq" data-val="weekly" onclick="setToggle(this)">Viikottain</div>
       <div class="toggle" data-group="freq" data-val="biweekly" onclick="setToggle(this)">Joka 2. viikko</div>
       <div class="toggle" data-group="freq" data-val="monthly" onclick="setToggle(this)">Kuukausittain</div>
@@ -541,13 +554,23 @@
     <div class="result-line bold"><span>Hinta sis. ALV 25,5 %</span><span id="rGross">—</span></div>
     <div class="result-line total"><span>Tarjoushinta (ALV 0 %)</span><span id="rFinal">—</span></div>
  
+    <div id="rContractSummaryBlock" style="margin:10px 0 0 0; padding:10px 14px; background:var(--blue-light); border-radius:var(--radius); border:1px solid #c8dff5;">
+      <div style="font-size:11px; font-weight:700; color:var(--blue); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:6px;">Sopimusjakso</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px;">
+        <div><div style="font-size:11px; color:var(--text-muted);">Toistuvuus</div><div style="font-size:13px; font-weight:600; color:var(--text);" id="rFreqLabel">—</div></div>
+        <div><div style="font-size:11px; color:var(--text-muted);">Käyntejä yht.</div><div style="font-size:13px; font-weight:600; color:var(--text);" id="rContractVisits">—</div></div>
+        <div><div style="font-size:11px; color:var(--text-muted);">Työtunteja yht.</div><div style="font-size:13px; font-weight:600; color:var(--text);" id="rContractHours">—</div></div>
+      </div>
+    </div>
+ 
     <div class="internal-block">
       <div class="internal-label">Sisäinen — ei näy asiakkaalle</div>
       <div class="internal-line"><span>Työvoimakustannus (15,46 €/h)</span><span id="iLaborCost">—</span></div>
       <div class="internal-line"><span>Materiaalit &amp; kemikaalit</span><span id="iMaterial">—</span></div>
       <div class="internal-line"><span>Oman kaluston kustannus</span><span id="iOwnEq">—</span></div>
-      <div class="internal-line strong"><span>Kate €</span><span id="iMarginEur">—</span></div>
+      <div class="internal-line strong"><span>Kate € / käynti</span><span id="iMarginEur">—</span></div>
       <div class="internal-line strong"><span>Kate %</span><span id="iMarginPct">—</span></div>
+      <div class="internal-line strong" id="iContractMarginRow"><span>Kate € / sopimus</span><span id="iContractMarginEur">—</span></div>
     </div>
  
     <div class="kpi-row">
@@ -595,7 +618,7 @@
  
   const services = [
     { id:"basic",     name:"Perussiivous",      rate:29 },
-    { id:"deepclean", name:"Tehopyyhintä",       rate:35 },
+    { id:"deepclean", name:"Siivous + Desinfiointi", rate:35 },
     { id:"window",    name:"Ikkunapesu",         rate:32 },
     { id:"postcon",   name:"Rakennussiivous",    rate:35 },
     { id:"movein",    name:"Muuttosiivous",      rate:32 },
@@ -621,7 +644,7 @@
  
   let liftDays = 0;
   const state = { customer: "new", freq: "weekly", servicetype: "cleaning" };
-  const freqPerMonth = { once: null, weekly: 4.33, biweekly: 2.17, monthly: 1 };
+  const freqPerMonth = { once: null, weekly: 4.33, biweekly: 2.17, monthly: 1 }; // daily handled dynamically
  
   function buildServices() {
     document.getElementById("serviceGrid").innerHTML = services.map(s => `
@@ -691,6 +714,10 @@
       }
     }
  
+    if (g === "freq") {
+      const wrap = document.getElementById("dailyDaysWrap");
+      wrap.style.display = state.freq === "daily" ? "inline-flex" : "none";
+    }
     if (g === "servicetype") {
       const isStaffing = state.servicetype === "staffing";
       document.getElementById("serviceGridWrap").style.display = isStaffing ? "none" : "block";
@@ -763,8 +790,12 @@
     const marginEur = netServices - totalCost;
     const marginPct = netServices > 0 ? (marginEur / netServices * 100) : 0;
  
-    const fpm = freqPerMonth[state.freq];
+    const dailyDays = parseInt(document.getElementById("dailyDays").value) || 5;
+    const fpmBase = { once: null, daily: null, weekly: 4.33, biweekly: 2.17, monthly: 1 };
+    const fpm = state.freq === "daily" ? (dailyDays * 4.33) : fpmBase[state.freq];
     const contractTotal = fpm ? net * fpm * months : net;
+    const contractVisits = fpm ? Math.round(fpm * months) : 1;
+    const contractHours = contractVisits * totalHours;
  
     const activeNames = state.servicetype === "staffing"
       ? [document.getElementById("staffingDesc").value || "Vuokrasiivooja"]
@@ -810,8 +841,11 @@
     document.getElementById("iLaborCost").textContent = fmt(laborCost);
     document.getElementById("iMaterial").textContent = fmt(materialCost) + " (" + Math.round(materialPct * 100) + " %)";
     document.getElementById("iOwnEq").textContent = fmt(ownEqCost);
+    const contractMarginEur = fpm ? marginEur * fpm * months : marginEur;
     document.getElementById("iMarginEur").textContent = fmt(marginEur);
     document.getElementById("iMarginPct").textContent = Math.round(marginPct) + " %";
+    document.getElementById("iContractMarginEur").textContent = fpm ? fmt(contractMarginEur) + " (" + months + " kk)" : "Kertasuoritus";
+    document.getElementById("iContractMarginRow").style.opacity = fpm ? "1" : "0.4";
  
     let marginColor;
     if (marginPct >= 30) marginColor = "var(--green)";
@@ -823,6 +857,18 @@
  
     document.getElementById("rPerVisit").textContent = fmt(net);
     document.getElementById("rContractTotal").textContent = fpm ? fmt(contractTotal) : "Kertasuoritus";
+ 
+    // Sopimusjakso-yhteenveto
+    const freqLabelMap = { once: "Kertasuoritus", daily: dailyDays + " pv / vko", weekly: "1 x / vko", biweekly: "1 x / 2 vko", monthly: "1 x / kk" };
+    const contractSummaryBlock = document.getElementById("rContractSummaryBlock");
+    if (fpm) {
+      contractSummaryBlock.style.display = "block";
+      document.getElementById("rFreqLabel").textContent = freqLabelMap[state.freq] || state.freq;
+      document.getElementById("rContractVisits").textContent = contractVisits + " käyntiä";
+      document.getElementById("rContractHours").textContent = contractHours.toFixed(0) + " h";
+    } else {
+      contractSummaryBlock.style.display = "none";
+    }
  
     const alertEl = document.getElementById("marginAlert");
     alertEl.style.padding = "7px 11px";
@@ -938,7 +984,7 @@
     const locationSel = document.getElementById("location");
     const locationName = locationSel.options[locationSel.selectedIndex].text;
  
-    const freqMap = { "Kertasuoritus": "Kertasuoritus", "Viikottain": "1 x / vko", "Joka 2. viikko": "1 x / 2 vko", "Kuukausittain": "1 x / kk" };
+    const freqMap = { "Kertasuoritus": "Kertasuoritus", "Päivittäin": "5 x / vko", "Viikottain": "1 x / vko", "Joka 2. viikko": "1 x / 2 vko", "Kuukausittain": "1 x / kk" };
     const freqLabel = freqMap[freqEl ? freqEl.textContent : ""] || freq;
  
     const kohde = address !== "[Osoite]" ? client + ", " + address : client;
